@@ -18,12 +18,13 @@ import {
 
 import { User, Settings, LogOut } from "lucide-react";
 
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { logout } from "@/services/auth.service";
 
 export default function Navbar({ userData }) {
-  console.log("userdata", userData);
+  // console.log("userdata", userData);
   const router = useRouter();
+  const pathname = usePathname();
 
   const handleLogout = async () => {
     // router.push("/login");
@@ -36,6 +37,17 @@ export default function Navbar({ userData }) {
     }
   };
 
+  const navItems = [
+    {
+      label: "Dashboard",
+      href: "/dashboard",
+    },
+    // {
+    //   label: "Books",
+    //   href: "/books",
+    // },
+  ];
+
   return (
     <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur">
       <Container>
@@ -45,19 +57,19 @@ export default function Navbar({ userData }) {
             <Logo />
 
             <nav className="hidden gap-6 md:flex">
-              <Link
-                href="/dashboard"
-                className="text-sm font-medium hover:text-primary"
-              >
-                Dashboard
-              </Link>
-
-              <Link
-                href="/books"
-                className="text-sm text-muted-foreground hover:text-primary"
-              >
-                Books
-              </Link>
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`text-sm transition-colors hover:text-primary ${
+                    pathname === item.href
+                      ? "font-medium text-primary"
+                      : "font-medium text-muted-foreground"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
             </nav>
           </div>
 

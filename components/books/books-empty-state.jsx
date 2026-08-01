@@ -14,11 +14,6 @@ export default function BooksEmptyState() {
         <p className="mt-2 max-w-sm text-muted-foreground">
           Start building your personal library by adding your first book.
         </p>
-
-        <Button className="mt-8">
-          <Plus className="mr-2 h-4 w-4" />
-          Add Book
-        </Button>
       </div>
     </div>
   );

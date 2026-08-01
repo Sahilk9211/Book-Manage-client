@@ -8,7 +8,7 @@ import BooksSection from "@/components/books/books-section";
 
 import useBooks from "@/hooks/useBooks";
 
-export default function DashboardPage() {
+const page = () => {
   const {
     books,
     dashboard,
@@ -25,16 +25,8 @@ export default function DashboardPage() {
     fetchBooks,
     fetchDashboard,
   } = useBooks();
-
   return (
     <>
-      <DashboardHeader
-        fetchBooks={fetchBooks}
-        fetchDashboard={fetchDashboard}
-      />
-
-      <StatsGrid stats={dashboard} />
-
       <BooksToolbar
         search={search}
         setSearch={setSearch}
@@ -51,4 +43,6 @@ export default function DashboardPage() {
       />
     </>
   );
-}
+};
+
+export default page;

@@ -23,7 +23,11 @@ export default function DashboardLayout({ children }) {
   }, []);
 
   if (!user) {
-    return <div>Loading...</div>;
+    return (
+      <div className="h-screen w-screen flex justify-center items-center">
+        Loading...
+      </div>
+    );
   }
   return (
     <>

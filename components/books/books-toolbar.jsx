@@ -3,7 +3,6 @@
 import { Search, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-
 import { Input } from "@/components/ui/input";
 
 import {
@@ -14,24 +13,39 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import { tagOptions, statusOptions, sortOptions } from "@/constants/filters";
+import { statusOptions, sortOptions } from "@/constants/filters";
 
-export default function BooksToolbar() {
+export default function BooksToolbar({
+  search,
+  setSearch,
+  filters,
+  setFilters,
+  tagOptions,
+}) {
   return (
     <section className="mb-8 rounded-xl border p-5">
       <div className="flex flex-wrap items-center gap-5">
-        {/* Search */}
-
         <div className="relative">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
 
-          <Input placeholder="Search books..." className="pl-10" />
+          <Input
+            placeholder="Search books..."
+            className="pl-10"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
         </div>
 
-        {/* Tag */}
-
-        <Select>
-          <SelectTrigger>
+        <Select
+          value={filters.tag || "all"}
+          onValueChange={(value) =>
+            setFilters((prev) => ({
+              ...prev,
+              tag: value === "all" ? "" : value,
+            }))
+          }
+        >
+          <SelectTrigger className="w-[180px]">
             <SelectValue placeholder="All Tags" />
           </SelectTrigger>
 
@@ -44,10 +58,16 @@ export default function BooksToolbar() {
           </SelectContent>
         </Select>
 
-        {/* Status */}
-
-        <Select>
-          <SelectTrigger>
+        <Select
+          value={filters.status || "all"}
+          onValueChange={(value) =>
+            setFilters((prev) => ({
+              ...prev,
+              status: value === "all" ? "" : value,
+            }))
+          }
+        >
+          <SelectTrigger className="w-[180px]">
             <SelectValue placeholder="All Status" />
           </SelectTrigger>
 
@@ -60,11 +80,17 @@ export default function BooksToolbar() {
           </SelectContent>
         </Select>
 
-        {/* Sort */}
-
-        <Select>
-          <SelectTrigger>
-            <SelectValue placeholder="Recently Added" />
+        <Select
+          value={filters.sort}
+          onValueChange={(value) =>
+            setFilters((prev) => ({
+              ...prev,
+              sort: value,
+            }))
+          }
+        >
+          <SelectTrigger className="w-[180px]">
+            <SelectValue />
           </SelectTrigger>
 
           <SelectContent>
@@ -76,12 +102,22 @@ export default function BooksToolbar() {
           </SelectContent>
         </Select>
 
-        <div className="">
-          <Button variant="outline">
-            <X className="mr-2 h-4 w-4" />
-            Clear Filters
-          </Button>
-        </div>
+        <Button
+          variant="outline"
+          onClick={() => {
+            setSearch("");
+
+            setFilters({
+              search: "",
+              tag: "",
+              status: "",
+              sort: "-createdAt",
+            });
+          }}
+        >
+          <X className="mr-2 h-4 w-4" />
+          Clear Filters
+        </Button>
       </div>
     </section>
   );

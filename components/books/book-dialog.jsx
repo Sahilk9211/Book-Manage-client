@@ -19,6 +19,7 @@ export default function BookDialog({
   mode = "create",
   book,
   fetchBooks,
+  fetchDashboard,
 }) {
   const isEdit = mode === "edit";
 
@@ -38,9 +39,13 @@ export default function BookDialog({
       if (mode === "edit") {
         await updateBook(book._id, payload);
 
+        await Promise.all([fetchDashboard()]);
+
         toast.success("Book updated successfully");
       } else {
         await createBook(payload);
+
+        await Promise.all([fetchDashboard()]);
 
         toast.success("Book added successfully");
       }
@@ -49,6 +54,7 @@ export default function BookDialog({
 
       onOpenChange(false);
     } catch (error) {
+      console.error("Book Dialog Error:", error);
       toast.error(error.response?.data?.message || "Something went wrong");
     }
   };

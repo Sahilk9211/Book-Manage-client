@@ -1,22 +1,3 @@
-export const tagOptions = [
-  {
-    label: "All Tags",
-    value: "all",
-  },
-  {
-    label: "Programming",
-    value: "programming",
-  },
-  {
-    label: "Self Growth",
-    value: "self-growth",
-  },
-  {
-    label: "Productivity",
-    value: "productivity",
-  },
-];
-
 export const statusOptions = [
   {
     label: "All Status",
@@ -24,29 +5,41 @@ export const statusOptions = [
   },
   {
     label: "Want to Read",
-    value: "want-to-read",
+    value: "Want to Read",
   },
   {
     label: "Reading",
-    value: "reading",
+    value: "Reading",
   },
   {
     label: "Completed",
-    value: "completed",
+    value: "Completed",
   },
 ];
 
 export const sortOptions = [
   {
     label: "Recently Added",
-    value: "recent",
+    value: "-createdAt",
+  },
+  {
+    label: "Oldest First",
+    value: "createdAt",
   },
   {
     label: "Title (A-Z)",
     value: "title",
   },
   {
-    label: "Author",
+    label: "Title (Z-A)",
+    value: "-title",
+  },
+  {
+    label: "Author (A-Z)",
     value: "author",
+  },
+  {
+    label: "Author (Z-A)",
+    value: "-author",
   },
 ];

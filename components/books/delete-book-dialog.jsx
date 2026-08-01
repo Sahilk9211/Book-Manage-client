@@ -19,12 +19,13 @@ export default function DeleteBookDialog({
   onOpenChange,
   book,
   fetchBooks,
+  fetchDashboard,
 }) {
   const handleDelete = async () => {
     try {
       await deleteBook(book._id);
 
-      await fetchBooks();
+      await Promise.all([fetchBooks(), fetchDashboard()]);
 
       toast.success("Book deleted successfully");
 
