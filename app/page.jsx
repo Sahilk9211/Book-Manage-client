@@ -1,3 +1,4 @@
+"use client";
 import Navbar from "@/components/common/navbar";
 import Container from "@/components/common/container";
 

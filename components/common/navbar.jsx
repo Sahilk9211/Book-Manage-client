@@ -19,13 +19,21 @@ import {
 import { User, Settings, LogOut } from "lucide-react";
 
 import { useRouter } from "next/navigation";
+import { logout } from "@/services/auth.service";
 
-export default function Navbar() {
+export default function Navbar({ userData }) {
+  console.log("userdata", userData);
   const router = useRouter();
-  const handleLogout = () => {
-    // Add your logout logic here
-    console.log("User logged out");
-    router.push("/login");
+
+  const handleLogout = async () => {
+    // router.push("/login");
+
+    try {
+      const res = await logout();
+      router.push("/login");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -65,7 +73,7 @@ export default function Navbar() {
                   className="rounded-full outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   <Avatar className="cursor-pointer">
-                    <AvatarFallback>SK</AvatarFallback>
+                    <AvatarFallback>{userData.name.charAt(0)}</AvatarFallback>
                   </Avatar>
                 </button>
               </DropdownMenuTrigger>

@@ -2,6 +2,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { APP_NAME, APP_DESCRIPTION } from "@/constants/app";
+import { getToken } from "@/utils/token";
+import { redirect } from "next/navigation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,6 +21,13 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  // const token = getToken();
+  // if (token) {
+  //   redirect("/dashboard");
+  // } else {
+  //   redirect("login");
+  // }
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body
