@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import StatusBadge from "./status-badge";
 import BookRowActions from "./book-row-actions";
 
-export default function BookCard({ book }) {
+export default function BookCard({ book, fetchBooks }) {
   return (
     <Card className="transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
       <CardContent className="space-y-4 p-5">
@@ -13,7 +13,7 @@ export default function BookCard({ book }) {
             <p className="text-sm text-muted-foreground">{book.author}</p>
           </div>
 
-          <BookRowActions book={book} />
+          <BookRowActions book={book} fetchBooks={fetchBooks} />
         </div>
 
         <div className="flex flex-wrap gap-2">

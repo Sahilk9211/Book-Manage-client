@@ -11,12 +11,31 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 
+import { deleteBook } from "@/services/book.service";
+import { toast } from "sonner";
+
 export default function DeleteBookDialog({
   open,
   onOpenChange,
   book,
-  onConfirm,
+  fetchBooks,
 }) {
+  const handleDelete = async () => {
+    try {
+      await deleteBook(book._id);
+
+      await fetchBooks();
+
+      toast.success("Book deleted successfully");
+
+      onOpenChange(false);
+    } catch (error) {
+      console.error(error);
+
+      toast.error(error.response?.data?.message || "Failed to delete book");
+    }
+  };
+
   return (
     <AlertDialog open={open} onOpenChange={onOpenChange}>
       <AlertDialogContent>
@@ -24,12 +43,7 @@ export default function DeleteBookDialog({
           <AlertDialogTitle>Delete Book</AlertDialogTitle>
 
           <AlertDialogDescription>
-            Are you sure you want to delete{" "}
-            <span className="font-semibold text-foreground">
-              "{book?.title}"
-            </span>
-            ?
-            <br />
+            Are you sure you want to delete <strong>{book?.title}</strong>?
             <br />
             This action cannot be undone.
           </AlertDialogDescription>
@@ -38,12 +52,7 @@ export default function DeleteBookDialog({
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
 
-          <AlertDialogAction
-            className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
-            onClick={onConfirm}
-          >
-            Delete
-          </AlertDialogAction>
+          <AlertDialogAction onClick={handleDelete}>Delete</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

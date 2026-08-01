@@ -10,6 +10,7 @@ import BookDialog from "@/components/books/book-dialog";
 
 export default function DashboardHeader({ fetchBooks }) {
   const [open, setOpen] = useState(false);
+  const [selectedBook, setSelectedBook] = useState(null);
 
   return (
     <>

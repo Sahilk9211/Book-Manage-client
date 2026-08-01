@@ -35,17 +35,21 @@ export default function BookDialog({
             : data.tags,
       };
 
-      await createBook(payload);
+      if (mode === "edit") {
+        await updateBook(book._id, payload);
+
+        toast.success("Book updated successfully");
+      } else {
+        await createBook(payload);
+
+        toast.success("Book added successfully");
+      }
 
       await fetchBooks();
 
-      toast.success("Book added successfully");
-
       onOpenChange(false);
     } catch (error) {
-      console.error(error);
-
-      toast.error(error.response?.data?.message);
+      toast.error(error.response?.data?.message || "Something went wrong");
     }
   };
 
@@ -64,12 +68,17 @@ export default function BookDialog({
 
         <BookForm
           defaultValues={
-            book || {
-              title: "",
-              author: "",
-              tags: "",
-              status: "Want to Read",
-            }
+            book
+              ? {
+                  ...book,
+                  tags: book.tags.join(", "),
+                }
+              : {
+                  title: "",
+                  author: "",
+                  tags: "",
+                  status: "Want to Read",
+                }
           }
           submitLabel={isEdit ? "Update Book" : "Save Book"}
           onSubmit={handleSubmit}

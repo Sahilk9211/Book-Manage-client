@@ -40,7 +40,7 @@ export default function DashboardPage() {
 
       <BooksToolbar />
 
-      <BooksSection books={books} loading={loading} />
+      <BooksSection books={books} loading={loading} fetchBooks={fetchBooks} />
     </>
   );
 }

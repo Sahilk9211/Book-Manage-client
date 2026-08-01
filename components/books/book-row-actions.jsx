@@ -16,7 +16,7 @@ import {
 import DeleteBookDialog from "./delete-book-dialog";
 import BookDialog from "./book-dialog";
 
-export default function BookRowActions({ book }) {
+export default function BookRowActions({ book, fetchBooks }) {
   const [editOpen, setEditOpen] = useState(false);
 
   const [deleteOpen, setDeleteOpen] = useState(false);
@@ -51,16 +51,14 @@ export default function BookRowActions({ book }) {
         open={editOpen}
         onOpenChange={setEditOpen}
         book={book}
+        fetchBooks={fetchBooks}
       />
 
       <DeleteBookDialog
         open={deleteOpen}
         onOpenChange={setDeleteOpen}
         book={book}
-        onConfirm={() => {
-          console.log("Delete", book);
-          setDeleteOpen(false);
-        }}
+        fetchBooks={fetchBooks}
       />
     </>
   );

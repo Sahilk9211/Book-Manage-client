@@ -5,7 +5,7 @@ import BooksMobileList from "./books-mobile-list";
 import BooksEmptyState from "./books-empty-state";
 import BooksSkeleton from "./books-skeleton";
 
-export default function BooksSection({ books, loading = true }) {
+export default function BooksSection({ books, loading = true, fetchBooks }) {
   if (loading) {
     return <BooksSkeleton />;
   }
@@ -17,11 +17,11 @@ export default function BooksSection({ books, loading = true }) {
   return (
     <>
       <div className="hidden md:block">
-        <BooksTable books={books} />
+        <BooksTable books={books} fetchBooks={fetchBooks} />
       </div>
 
       <div className="md:hidden">
-        <BooksMobileList books={books} />
+        <BooksMobileList books={books} fetchBooks={fetchBooks} />
       </div>
     </>
   );

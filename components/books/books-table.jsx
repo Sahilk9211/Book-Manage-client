@@ -10,7 +10,7 @@ import {
 import StatusBadge from "./status-badge";
 import BookRowActions from "./book-row-actions";
 
-export default function BooksTable({ books }) {
+export default function BooksTable({ books, fetchBooks }) {
   return (
     <div className="overflow-hidden rounded-xl border">
       <Table>
@@ -42,7 +42,7 @@ export default function BooksTable({ books }) {
               </TableCell>
 
               <TableCell>
-                <BookRowActions book={book} />
+                <BookRowActions book={book} fetchBooks={fetchBooks} />
               </TableCell>
             </TableRow>
           ))}
