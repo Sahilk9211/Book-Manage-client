@@ -30,7 +30,7 @@ export default function BooksTable({ books }) {
 
         <TableBody>
           {books.map((book) => (
-            <TableRow key={book.id}>
+            <TableRow key={book._id}>
               <TableCell className="font-medium">{book.title}</TableCell>
 
               <TableCell>{book.author}</TableCell>

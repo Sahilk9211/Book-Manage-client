@@ -1,7 +1,7 @@
 export const BOOK_STATUS = [
   {
-    label: "Want To Read",
-    value: "Want To Read",
+    label: "Want to Read",
+    value: "Want to Read",
   },
   {
     label: "Reading",

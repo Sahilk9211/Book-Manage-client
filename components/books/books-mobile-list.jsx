@@ -4,7 +4,7 @@ export default function BooksMobileList({ books }) {
   return (
     <div className="space-y-4">
       {books.map((book) => (
-        <BookCard key={book.id} book={book} />
+        <BookCard key={book._id} book={book} />
       ))}
     </div>
   );

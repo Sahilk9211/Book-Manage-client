@@ -8,7 +8,7 @@ import { Plus } from "lucide-react";
 
 import BookDialog from "@/components/books/book-dialog";
 
-export default function DashboardHeader() {
+export default function DashboardHeader({ fetchBooks }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -28,7 +28,7 @@ export default function DashboardHeader() {
         </Button>
       </div>
 
-      <BookDialog open={open} onOpenChange={setOpen} />
+      <BookDialog open={open} onOpenChange={setOpen} fetchBooks={fetchBooks} />
     </>
   );
 }

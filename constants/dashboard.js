@@ -24,7 +24,7 @@ export const dashboardStats = [
   },
   {
     id: 4,
-    title: "Want To Read",
+    title: "Want to Read",
     value: 4,
     subtitle: "Next queue",
     icon: Clock3,

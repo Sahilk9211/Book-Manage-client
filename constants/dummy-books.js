@@ -18,6 +18,6 @@ export const dummyBooks = [
     title: "Deep Work",
     author: "Cal Newport",
     tags: ["Productivity"],
-    status: "Want To Read",
+    status: "Want to Read",
   },
 ];

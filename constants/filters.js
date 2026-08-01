@@ -23,7 +23,7 @@ export const statusOptions = [
     value: "all",
   },
   {
-    label: "Want To Read",
+    label: "Want to Read",
     value: "want-to-read",
   },
   {
