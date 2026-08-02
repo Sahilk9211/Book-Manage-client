@@ -85,7 +85,7 @@ export default function Navbar({ userData }) {
                   className="rounded-full outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   <Avatar className="cursor-pointer">
-                    <AvatarFallback>{userData.name.charAt(0)}</AvatarFallback>
+                    <AvatarFallback>{userData?.name?.charAt(0)}</AvatarFallback>
                   </Avatar>
                 </button>
               </DropdownMenuTrigger>
