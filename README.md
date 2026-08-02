@@ -1,36 +1,290 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Book-Manager-client
 
-## Getting Started
+# Personal Book Manager — Frontend
 
-First, run the development server:
+A modern and responsive frontend for the **Personal Book Manager** application, developed as part of the **Thumbstack MERN Stack Developer Assignment**.
+
+The application allows users to securely manage their personal book collection with a clean, intuitive interface. Users can register, log in, add books, edit and delete books, filter and search their collection, and view reading statistics through an interactive dashboard.
+
+## Tech Stack
+
+- Next.js 15 (App Router)
+- React
+- JavaScript
+- Tailwind CSS
+- shadcn/ui
+- Axios
+- React Hook Form
+- Zod
+- next-themes
+- Sonner
+- Lucide React
+
+## Features
+
+### Authentication
+
+- User Registration
+- User Login
+- JWT Authentication
+- Protected Routes
+- Persistent User Session
+- Logout
+
+### Dashboard
+
+- Reading Statistics
+- Total Books
+- Reading Books
+- Completed Books
+- Want To Read Books
+
+### Book Management
+
+- Add Book
+- Edit Book
+- Delete Book
+- Reading Status Management
+- Search Books
+- Filter by Reading Status
+- Filter by Tags
+- Responsive Book Table
+- Mobile Card View
+
+### UI & UX
+
+- Responsive Design
+- Dark / Light Theme
+- Skeleton Loading
+- Empty States
+- Confirmation Dialogs
+- Toast Notifications
+- Form Validation
+- Modern Dashboard Layout
+
+## Project Structure
+
+```text
+frontend
+│
+├── public
+│
+├── src
+│   │
+│   ├── app
+│   │
+│   ├── components
+│   │   ├── auth
+│   │   ├── books
+│   │   ├── dashboard
+│   │   ├── layout
+│   │   └── ui
+│   │
+│   ├── constants
+│   │
+│   ├── context
+│   │
+│   ├── hooks
+│   │
+│   ├── lib
+│   │   └── validations
+│   │
+│   ├── services
+│   │
+│   ├── utils
+│   │
+│   └── middleware
+│
+├── .env.example
+├── package.json
+└── README.md
+```
+
+## Installation & Setup
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Sahilk9211/Book-Manager-client
+cd client
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Configure Environment Variables
+
+Create a `.env.local` file in the project root:
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:5000/api
+```
+
+### 4. Start the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 5. Build for Production
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```bash
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 6. Run Production Build
 
-## Learn More
+```bash
+npm start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Application Pages
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Authentication
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Login Page
+- Signup Page
 
-## Deploy on Vercel
+### Dashboard
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Dashboard Overview
+- Book Statistics
+- Book Collection
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Book Management
+
+- Add Book Dialog
+- Edit Book Dialog
+- Delete Confirmation Dialog
+
+## Form Validation
+
+Client-side validation is implemented using **React Hook Form** and **Zod**.
+
+Validated fields include:
+
+- Book Title
+- Author Name
+- Reading Status
+- Tags
+
+Authentication forms are also validated before submission.
+
+## API Integration
+
+The frontend communicates with the Express.js backend using **Axios**.
+
+### Authentication
+
+- Register User
+- Login User
+- Logout User
+- Get Current User
+
+### Books
+
+- Get Books
+- Create Book
+- Update Book
+- Delete Book
+- Update Reading Status
+
+### Dashboard
+
+- Fetch Dashboard Statistics
+
+## Theme Support
+
+The application supports both:
+
+- Light Mode
+- Dark Mode
+
+Theme switching is implemented using **next-themes**.
+
+## UI Components
+
+The project uses **shadcn/ui** components including:
+
+- Button
+- Card
+- Dialog
+- Alert Dialog
+- Dropdown Menu
+- Input
+- Select
+- Badge
+- Table
+- Skeleton
+- Sonner Toast
+
+## Responsive Design
+
+The application is fully responsive across:
+
+- Desktop
+- Tablet
+- Mobile
+
+Desktop users view books in a table layout, while mobile users are presented with an optimized card layout.
+
+## Environment Variables
+
+| Variable | Description |
+|----------|-------------|
+| `NEXT_PUBLIC_API_URL` | Backend API Base URL |
+
+## Deployment
+
+The frontend can be deployed using:
+
+- Vercel
+
+The backend API should be deployed separately (e.g., Render) and connected via the `NEXT_PUBLIC_API_URL` environment variable.
+
+## Future Improvements
+
+- Pagination Controls
+- Advanced Sorting
+- Debounced Search
+- User Profile
+- Reading Goals
+- Book Cover Upload
+- Reading Analytics
+- Favorites
+- Archive Books
+
+## Screenshots
+
+### Login Page
+
+_Add Screenshot_
+
+### Signup Page
+
+_Add Screenshot_
+
+### Dashboard
+
+_Add Screenshot_
+
+### Add Book Dialog
+
+_Add Screenshot_
+
+### Dark Mode
+
+_Add Screenshot_
+
+### Mobile View
+
+_Add Screenshot_
+
+## Author
+
+**Sahil Khan**
+
+Developed as part of the **Thumbstack MERN Stack Developer Assignment**.
