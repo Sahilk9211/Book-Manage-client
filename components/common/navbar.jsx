@@ -77,46 +77,52 @@ export default function Navbar({ userData }) {
           <div className="flex items-center gap-3">
             <ThemeToggle />
 
-            {/* User Dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button
-                  type="button"
-                  className="rounded-full outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                >
-                  <Avatar className="cursor-pointer">
-                    <AvatarFallback>{userData?.name?.charAt(0)}</AvatarFallback>
-                  </Avatar>
-                </button>
-              </DropdownMenuTrigger>
+            {userData?.name && (
+              <>
+                {/* User Dropdown */}
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <button
+                      type="button"
+                      className="rounded-full outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    >
+                      <Avatar className="cursor-pointer">
+                        <AvatarFallback>
+                          {userData?.name?.charAt(0)}
+                        </AvatarFallback>
+                      </Avatar>
+                    </button>
+                  </DropdownMenuTrigger>
 
-              <DropdownMenuContent align="end" className="w-48">
-                <DropdownMenuItem asChild>
-                  <Link href="/profile" className="cursor-pointer">
-                    <User />
-                    <span>Profile</span>
-                  </Link>
-                </DropdownMenuItem>
+                  <DropdownMenuContent align="end" className="w-48">
+                    <DropdownMenuItem asChild>
+                      <Link href="/profile" className="cursor-pointer">
+                        <User />
+                        <span>Profile</span>
+                      </Link>
+                    </DropdownMenuItem>
 
-                <DropdownMenuItem asChild>
-                  <Link href="/settings" className="cursor-pointer">
-                    <Settings />
-                    <span>Settings</span>
-                  </Link>
-                </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link href="/settings" className="cursor-pointer">
+                        <Settings />
+                        <span>Settings</span>
+                      </Link>
+                    </DropdownMenuItem>
 
-                <DropdownMenuSeparator />
+                    <DropdownMenuSeparator />
 
-                {/* Logout */}
-                <DropdownMenuItem
-                  onClick={handleLogout}
-                  className="cursor-pointer text-destructive focus:text-destructive"
-                >
-                  <LogOut />
-                  <span>Logout</span>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+                    {/* Logout */}
+                    <DropdownMenuItem
+                      onClick={handleLogout}
+                      className="cursor-pointer text-destructive focus:text-destructive"
+                    >
+                      <LogOut />
+                      <span>Logout</span>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </>
+            )}
           </div>
         </div>
       </Container>
